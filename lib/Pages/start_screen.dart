@@ -29,28 +29,31 @@ class StartScreen extends StatelessWidget {
     return Scaffold(
       body: GradientBackground(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: AppSizes.spacingMedium),
+          // 🟢 THE FIX: We added SingleChildScrollView here
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const SizedBox(height: AppSizes.spacingMedium),
 
-              // Main welcome message
-              const ScreenHeader(
-                title: 'Are you having a\nPanic Attack?',
-                titleStyle: AppTextStyles.heading1,
-              ),
+                // Main welcome message
+                const ScreenHeader(
+                  title: 'Are you having a\nPanic Attack?',
+                  titleStyle: AppTextStyles.heading1,
+                ),
 
-              const SizedBox(height: AppSizes.spacingMedium),
+                const SizedBox(height: AppSizes.spacingMedium),
 
-              // App branding image with rotation
-              _buildBrandingImage(screenSize),
+                // App branding image with rotation
+                _buildBrandingImage(screenSize),
 
-              const SizedBox(height: AppSizes.spacingXLarge),
+                const SizedBox(height: AppSizes.spacingXLarge),
 
-              // Get Started button
-              _buildGetStartedButton(context),
-            ],
-          ),
+                // Get Started button
+                _buildGetStartedButton(context),
+              ],
+            ),
+          ), // 🟢 Closed the SingleChildScrollView here
         ),
       ),
     );

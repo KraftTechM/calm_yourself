@@ -33,37 +33,40 @@ class FinishScreen extends StatelessWidget {
           final screenSize = constraints.biggest;
 
           return Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  // Congratulations header
-                  _buildCongratulationsHeader(),
+            // 🟢 THE FIX: We added SingleChildScrollView here
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    // Congratulations header
+                    _buildCongratulationsHeader(),
 
-                  const SizedBox(height: AppSizes.spacingSmall),
+                    const SizedBox(height: AppSizes.spacingSmall),
 
-                  // Motivational message
-                  _buildMotivationalMessage(),
+                    // Motivational message
+                    _buildMotivationalMessage(),
 
-                  const SizedBox(height: AppSizes.spacingLarge),
+                    const SizedBox(height: AppSizes.spacingLarge),
 
-                  // Celebration image
-                  _buildCelebrationImage(screenSize),
+                    // Celebration image
+                    _buildCelebrationImage(screenSize),
 
-                  const SizedBox(height: AppSizes.spacingMedium),
+                    const SizedBox(height: AppSizes.spacingMedium),
 
-                  // Session duration display
-                  _buildSessionDuration(),
+                    // Session duration display
+                    _buildSessionDuration(),
 
-                  const SizedBox(height: AppSizes.spacingLarge),
+                    const SizedBox(height: AppSizes.spacingLarge),
 
-                  // Back to Home button
-                  _buildBackToHomeButton(context, screenSize),
-                ],
+                    // Back to Home button
+                    _buildBackToHomeButton(context, screenSize),
+                  ],
+                ),
               ),
-            ),
+            ), // 🟢 Closed the SingleChildScrollView here
           );
         },
       ),
